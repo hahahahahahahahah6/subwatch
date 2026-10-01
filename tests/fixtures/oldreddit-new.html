@@ -1,0 +1,108 @@
+<!--
+  subwatch test fixture — synthetic but faithful slice of old.reddit.com
+  server-rendered /r/<sub>/new/ markup.
+
+  Why synthetic: anonymous fetches to old.reddit.com are 302-bounced to
+  /login/?reason=lor2 (verified 2026-10-01), the Wayback Machine was offline
+  and Common Crawl's index 504'd from this network. old.reddit's listing
+  markup has been byte-stable for ~15 years; this fixture reproduces the
+  structural hooks the parser targets (div.thing / data-fullname / p.title /
+  a.title / data-timestamp / <time datetime> / data-author / data-permalink).
+
+  Contents: 6 post blocks —
+    t3_aaa111  normal self post (all fields present)
+    t3_bbb222  link post, HTML entities in title
+    t3_ccc333  stickied  -> must be skipped
+    t3_ddd444  promoted  -> must be skipped
+    t3_eee555  no data-fullname (falls back to id="thing_t3_..."),
+               no data-timestamp (falls back to <time datetime>)
+    t3_fff666  10-digit data-timestamp (seconds) -> normalized to ms
+-->
+<!DOCTYPE html>
+<html>
+<head><title>mcp: new</title></head>
+<body>
+<div id="siteTable" class="sitetable linklisting">
+
+<div class="thing id-t3_aaa111 link self" id="thing_t3_aaa111"
+     data-fullname="t3_aaa111" data-timestamp="1759315200000"
+     data-author="mcp_fan" data-subreddit="mcp" data-domain="self.mcp"
+     data-permalink="/r/mcp/comments/aaa111/how_do_you_structure_mcp_servers/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title may-blank loggedin" href="/r/mcp/comments/aaa111/how_do_you_structure_mcp_servers/" tabindex="1">How do you structure MCP servers?</a>
+      <span class="domain">(<a href="/r/mcp/">self.mcp</a>)</span>
+    </p>
+    <p class="tagline">submitted <time datetime="2025-10-01T08:00:00+00:00" title="Wed Oct 1 08:00:00 2025 UTC">4 hours ago</time> by <a href="https://old.reddit.com/user/mcp_fan/" class="author may-blank id-t2_qwerty">mcp_fan</a> to <a href="https://old.reddit.com/r/mcp/" class="subreddit hover may-blank">r/mcp</a></p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+<div class="thing id-t3_bbb222 link" id="thing_t3_bbb222"
+     data-fullname="t3_bbb222" data-timestamp="1759311600000"
+     data-author="toolbuilder" data-subreddit="mcp" data-domain="example.com"
+     data-permalink="/r/mcp/comments/bbb222/mcp_vs_rest_a_practical_comparison/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title may-blank loggedin" href="https://example.com/blog/mcp-vs-rest" tabindex="1" rel="nofollow">MCP vs REST: a practical &amp; honest comparison</a>
+      <span class="domain">(<a href="https://example.com/blog/mcp-vs-rest">example.com</a>)</span>
+    </p>
+    <p class="tagline">submitted <time datetime="2025-10-01T07:00:00+00:00" title="Wed Oct 1 07:00:00 2025 UTC">5 hours ago</time> by <a href="https://old.reddit.com/user/toolbuilder/" class="author may-blank">toolbuilder</a> to <a href="https://old.reddit.com/r/mcp/" class="subreddit hover may-blank">r/mcp</a></p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+<div class="thing id-t3_ccc333 link stickied" id="thing_t3_ccc333"
+     data-fullname="t3_ccc333" data-timestamp="1759308000000"
+     data-author="mod_team" data-subreddit="mcp"
+     data-permalink="/r/mcp/comments/ccc333/monthly_discussion_thread/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title may-blank stickied" href="/r/mcp/comments/ccc333/monthly_discussion_thread/" tabindex="1">Monthly discussion thread (stickied)</a>
+    </p>
+    <p class="tagline">submitted <time datetime="2025-10-01T06:00:00+00:00">6 hours ago</time> by <a class="author">mod_team</a></p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+<div class="thing id-t3_ddd444 link promoted" id="thing_t3_ddd444"
+     data-fullname="t3_ddd444" data-timestamp="1759304400000"
+     data-author="sponsored" data-subreddit="mcp"
+     data-permalink="/r/mcp/comments/ddd444/sponsored_post/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title may-blank" href="https://ads.example.com/x" tabindex="1">Sponsored: try our dev tool</a>
+    </p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+<div class="thing id-t3_eee555 link self" id="thing_t3_eee555"
+     data-author="minimalist" data-subreddit="mcp"
+     data-permalink="/r/mcp/comments/eee555/minimal_markup_post/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title" href="/r/mcp/comments/eee555/minimal_markup_post/">Minimal markup post</a>
+    </p>
+    <p class="tagline">submitted <time datetime="2025-10-01T05:30:00+00:00" title="Wed Oct 1 05:30:00 2025 UTC">6 hours ago</time> by <a class="author">minimalist</a></p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+<div class="thing id-t3_fff666 link self" id="thing_t3_fff666"
+     data-fullname="t3_fff666" data-timestamp="1759299600"
+     data-author="oldtimer" data-subreddit="mcp"
+     data-permalink="/r/mcp/comments/fff666/ten_digit_timestamp/">
+  <div class="entry unvoted">
+    <p class="title">
+      <a class="title" href="/r/mcp/comments/fff666/ten_digit_timestamp/">Ten digit timestamp</a>
+    </p>
+    <p class="tagline">submitted <time datetime="2025-10-01T04:00:00+00:00">8 hours ago</time> by <a class="author">oldtimer</a></p>
+  </div>
+  <div class="clearleft"></div>
+</div>
+
+</div>
+<div class="nav-buttons"><span class="nextprev">view more: <a href="/r/mcp/new/?count=25&amp;after=t3_fff666" rel="nofollow next">next ›</a></span></div>
+</body>
+</html>

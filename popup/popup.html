@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>subwatch</h1>
+    <label class="switch" title="Enable/disable all monitoring">
+      <input type="checkbox" id="globalEnabled">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <div id="loginWarn" class="warn" hidden>
+    Reddit asked for a login — open <b>old.reddit.com</b> in this Chrome profile
+    and log in, then press Check now.
+  </div>
+
+  <section class="status">
+    <div><span>Last check:</span> <b id="lastCheck">never</b></div>
+    <div><span>Interval:</span>
+      <input type="number" id="pollMinutes" min="1" max="60" value="10"> min
+    </div>
+    <button id="checkNow" class="primary">Check now</button>
+  </section>
+
+  <section>
+    <h2>Watch a subreddit</h2>
+    <form id="addForm">
+      <input id="subInput" placeholder="subreddit (e.g. ClaudeCode)" required
+             pattern="[A-Za-z0-9_]{2,21}" title="letters, numbers, underscore">
+      <input id="kwInput" placeholder="keywords, comma separated (optional)">
+      <div class="modes">
+        <label><input type="radio" name="mode" value="all" checked> all new posts</label>
+        <label><input type="radio" name="mode" value="keywords"> keyword matches only</label>
+      </div>
+      <button type="submit" class="primary">Add monitor</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Monitors</h2>
+    <ul id="monitorList"></ul>
+    <p id="empty" class="muted">No monitors yet — add one above.</p>
+  </section>
+
+<script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+body {
+  width: 320px;
+  margin: 0;
+  padding: 12px 14px 16px;
+  font: 13px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1a1a1a;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+h1 { font-size: 17px; margin: 0; letter-spacing: 0.5px; }
+h2 { font-size: 12px; text-transform: uppercase; color: #666; margin: 14px 0 6px; }
+section.status { background: #f6f6f6; border-radius: 8px; padding: 8px 10px; }
+section.status div { margin: 2px 0; }
+section.status span { color: #666; }
+#pollMinutes { width: 44px; }
+.warn {
+  background: #fff3cd;
+  border: 1px solid #e6c200;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+form input[type="text"], form input:not([type]) {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 4px 0;
+  padding: 7px 9px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.modes { margin: 4px 0 6px; display: flex; gap: 12px; font-size: 12px; }
+button {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+button.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+button.primary:disabled { background: #9ec1f5; border-color: #9ec1f5; }
+#checkNow { margin-top: 6px; }
+ul { list-style: none; margin: 0; padding: 0; }
+li.monitor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid #eee;
+}
+li.monitor .name { font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+li.monitor .kw { display: block; font-weight: 400; font-size: 11px; color: #666; }
+li.monitor .del { color: #c00; border: none; background: none; font-size: 15px; padding: 2px 6px; }
+.muted { color: #888; font-size: 12px; }
+/* toggle switch */
+.switch { position: relative; display: inline-block; width: 38px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; inset: 0; cursor: pointer;
+  background: #ccc; border-radius: 22px; transition: 0.2s;
+}
+.slider:before {
+  content: ""; position: absolute; height: 16px; width: 16px;
+  left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.2s;
+}
+.switch input:checked + .slider { background: #1a73e8; }
+.switch input:checked + .slider:before { transform: translateX(16px); }
+.switch.small { width: 30px; height: 18px; }
+.switch.small .slider:before { height: 12px; width: 12px; }
+.switch.small input:checked + .slider:before { transform: translateX(12px); }
